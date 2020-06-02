@@ -47,11 +47,12 @@ INSTALLED_APPS = [
     # Third-party
     'debug_toolbar',
     'django_extensions',
-    'registration',
+    # 'registration',
 
     # Project-specific
     'users',
     'habit_tracker',
+    
 ]
 
 MIDDLEWARE = [
