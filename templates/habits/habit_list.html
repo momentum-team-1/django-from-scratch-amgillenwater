@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Your Habits</h2>
-
-<ul>
+<div class="container">
+    <div class="row">
+        <h2>Your Habits</h2>
+    </div>
     {% for habit in habits %}
-        <li>{{ habit.goal }}</li>
+    <div class="row">
+    <ul class="list-group">
+        <li class="list-group-item">{{ habit.goal}}</li>
+    </ul>
+    </div>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}
