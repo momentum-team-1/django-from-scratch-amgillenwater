@@ -16,8 +16,10 @@ def habit_list(request):
     return render(request, "habits/habit_list.html", {"habits": habits}) 
 
 @login_required
-def daily_record(request, pk):
-    record = get_object_or_404(request.user.habits, pk=pk)
-    return render(request, "habits/daily_record.html", {"record": record})
+def habit_detail(request, pk):
+    detail = get_object_or_404(request.user.habits, pk=pk)
+    return render(request, "habits/detail.html", {"detail": detail})
 
-
+# @login_required
+# def habit_detail(request,pk)
+#     record= get_object_or_404(request.user.)

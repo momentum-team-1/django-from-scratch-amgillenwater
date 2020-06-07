@@ -20,7 +20,7 @@ from habits import views as habits_views
 
 urlpatterns = [
     path('', habits_views.homepage, name="homepage"),
-    path('habits/<int:pk>/', habits_views.daily_record, name="daily_record"),
+    path('habits/<int:pk>/', habits_views.habit_detail, name="habit_detail"),
     path('habits/', habits_views.habit_list, name="habit_list"),
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),

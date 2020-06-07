@@ -9,7 +9,6 @@ class Habit(models.Model):
     def __str__(self):
         return self.goal
 
-
 class DailyRecord(models.Model):
     habit = models.ForeignKey(to=Habit, on_delete=models.CASCADE, related_name='records')
     quantity = models.PositiveIntegerField()
