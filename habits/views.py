@@ -19,7 +19,7 @@ def habit_list(request):
 @login_required
 def habit_detail(request, habit_pk):
     detail = get_object_or_404(request.user.habits, pk=habit_pk)
-    return render(request, "habits/detail.html", {"detail": detail})
+    return render(request, "habits/habit_detail.html", {"detail": detail})
 
 @login_required
 def add_habit(request):
@@ -34,4 +34,3 @@ def add_habit(request):
         form=HabitForm()
     
     return render(request, "habits/add_habit.html", {"form": form})
-    
