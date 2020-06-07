@@ -10,15 +10,19 @@
     <title>{% block title %}Habit Tracker{% endblock %}</title>
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="row-lg">
-            <h1 class="bg-primary text-white text-center p-3">Habit Tracker</h1>
-        </div>
-        <div>
-                {% block content %}
-                {% endblock %}
+    <div>
+        <div class="jumbotron bg-dark text-white">
+            <h1><a href="{% url 'homepage' %}"></a> Habit Tracker</h1>
+            {% if user.is_authenticated %}
+            <div>
+                Hello, {{user.username}}!
+                <a href="{% url 'auth_logout' %}">Logout</a>
             </div>
+            {% endif %}
         </div>
+        
+        {% block content %}
+        {% endblock %}
     </div>
     
 </body>
