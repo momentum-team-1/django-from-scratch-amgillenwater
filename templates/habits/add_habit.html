@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add a New Habit
+{% endblock %}
+
+{% block content%}
+<h2>Track a new Habit</h2>
+
+<form action="{% url 'add_habit' %}" method="POST" action="">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+        <textarea class="form-control" id="{{ form.title.id_for_label }}" rows="3"></textarea>
+    </div>
+
+    <div>
+        <button type="submit">Add new habit</button>
+    </div>
+</form>
+{% endblock %}
