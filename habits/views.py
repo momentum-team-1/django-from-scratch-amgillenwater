@@ -29,7 +29,7 @@ def add_habit(request):
             habit = form.save(commit=False)
             habit.user = request.user
             habit.save()
-            return redirect(to='habit_list', habit_pk=habit.pk)
+            return redirect(to='habit_detail', habit_pk=habit.pk)
     else:
         form=HabitForm()
     
