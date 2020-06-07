@@ -23,13 +23,13 @@ def habit_detail(request, habit_pk):
 
 @login_required
 def add_habit(request):
-    if request.method == "POST":
+    if request.method == 'POST':
         form = HabitForm(data=request.POST)
         if form.is_valid():
             habit = form.save(commit=False)
             habit.user = request.user
             habit.save()
-            return redirect(to='habit_detail', habit_pk=habit.pk)
+            return redirect(to='habit_list')
     else:
         form=HabitForm()
     
