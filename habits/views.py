@@ -34,3 +34,12 @@ def add_habit(request):
         form=HabitForm()
     
     return render(request, "habits/add_habit.html", {"form": form})
+
+@login_required
+def delete_habit(request, habit_pk):
+    habit = get_object_or_404(request.user.habits, pk=habit_pk)
+    if request.method == 'POST':
+        habit.delete()
+        return redirect(to='habit_list')
+
+    return render(request, "habits/delete_habit.html", {"habit": habit})
