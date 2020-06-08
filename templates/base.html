@@ -14,11 +14,12 @@
         <div class="jumbotron bg-dark text-white">
             <h1><a href="{% url 'homepage' %}"></a> Habit Tracker</h1>
             {% if user.is_authenticated %}
-            <div>
-                Hello, {{user.username}}!
+            Hello, {{user.username}}!
                 <a href="{% url 'auth_logout' %}">Logout</a>
-            </div>
             {% endif %}
+        </div>
+        <div class="container">
+                
         </div>
         
         {% block content %}

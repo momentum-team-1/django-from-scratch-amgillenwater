@@ -54,7 +54,7 @@ For this project, you will build a Django application that you can use to help t
   - I want to sleep 8 hours daily
 - Once you have habits, you should be able to make a daily record of your activity on each habit. That record should contain a date and a number for that date.
 - A user can only have one record per day per habit. You will need to use [the `unique_together` option](https://docs.djangoproject.com/en/2.2/ref/models/options/#unique-together) to enforce this.
-- Optimally, users can edit/update records and add records for previous days.
+<!-- - Optimally, users can edit/update records and add records for previous days. -->
 - Make your interface for this feature as easy to use as possible. For example, if you can choose the date for your record, have it default to the current date.
 - On the detail page for a habit, you should be able to see all the records for that habit in an HTML table. Show the user whether they met their goal for that day visually somehow -- maybe via colors. Think about accessibility here -- how would a user that can't see know whether they met their goal each day?
 
