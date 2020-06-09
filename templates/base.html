@@ -11,17 +11,15 @@
 </head>
 <body>
     <div>
-        <div class="jumbotron bg-dark text-white">
-            <h1><a href="{% url 'homepage' %}" class="text-decoration-none">Habit Tracker</a></h1>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4"><a href="{% url 'homepage' %}" class="text-decoration-none">Habit Tracker</a></h1>
             {% if user.is_authenticated %}
             Hello, {{user.username}}!
                 <a href="{% url 'auth_logout' %}">Logout</a>
             {% endif %}
+            </div>
         </div>
-        <div class="container">
-                
-        </div>
-        
         {% block content %}
         {% endblock %}
     </div>

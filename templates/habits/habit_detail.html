@@ -5,7 +5,7 @@ Daily Record
 {% endblock%}
 
 {% block content %}
-<div class="container ml-4">
+<div class="container ml-8">
     <h2>{{ habit }}</h2>
     <p>
         <a href="{% url 'delete_habit' habit_pk=habit.pk %}"> Delete this habit </a>
