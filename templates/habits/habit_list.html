@@ -8,7 +8,7 @@
     {% for habit in habits %}
     <div class="row mb-1 pl-0">
         <ul class="pl-0">
-            <li class="list-unstyled"><a class="btn btn-primary btn-sm" href="{% url 'habit_detail' habit_pk=habit.pk%}">{{ habit.goal}}</a></li>
+            <li class="list-unstyled"><a class="btn btn-primary btn-sm" href="{% url 'habit_detail' habit_pk=habit.pk%}">I want to {{habit.goal}} {{habit.goal_quantity_num}} {{habit.goal_quantity_unit}}</a></li>
         </ul>
     </div>
     {% endfor %}
