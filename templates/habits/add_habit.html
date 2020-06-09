@@ -7,20 +7,13 @@ Add a New Habit
 {% block content%}
 <span class="d-block p-2 bg-primary text-white"><h2 class="ml-8">Track a new habit</h2></span>
 
-<div class="container-fluid mt-4 ml-3">
-    <form action="{% url 'add_habit' %}" method="POST">
+    <form class="m-4" action="{% url 'add_habit' %}" method="POST">
     {% csrf_token %}
+    {{ form.as_p }}
+    {{ alternative_id.help_text }}
 
-    {% for field in form %}
-  <div class="form-field mb3">
-    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-    {{ field }}
-  </div>
-  
-    {% endfor %}
         <div>
             <button type="submit">Add new habit</button>
         </div>
     </form>
-</div>
 {% endblock %}

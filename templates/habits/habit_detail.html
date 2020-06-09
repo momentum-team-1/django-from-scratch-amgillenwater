@@ -6,7 +6,9 @@ Daily Record
 
 {% block content %}
 <div class="container ml-8">
-    <h2>{{ habit }}</h2>
+    <h2>I want to {{habit.goal}} {{habit.goal_quantity_num}} {{habit.goal_quantity_unit}}. </h2>
+    <p>Date started: {{habit.date_created}}</p>
+    <!-- add the details from the log here -->
     <p>
         <a href="{% url 'delete_habit' habit_pk=habit.pk %}"> Delete this habit </a>
     </p>
