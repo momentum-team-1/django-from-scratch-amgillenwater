@@ -5,6 +5,9 @@
     <div class="row">
         <h2>Your Habits</h2>
     </div>
+    <p>
+        <a href="{% url 'add_habit' %}">Add new habit</a>
+      </p>
     {% for habit in habits %}
     <div class="row">
         <ul class="list-group">
