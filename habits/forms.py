@@ -9,3 +9,12 @@ class HabitForm(forms.ModelForm):
             'goal_quantity_num',
             'goal_quantity_unit',
         ]
+
+class RecordForm(forms.ModelForm):
+    class Meta:
+        model= DailyRecord
+        fields= [
+            'recorded_on', 
+            'quantity_complete', 
+            'check_mark'
+        ]
