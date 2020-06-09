@@ -14,9 +14,13 @@ class Habit(models.Model):
 
 class DailyRecord(models.Model):
     habit = models.ForeignKey(to=Habit, on_delete=models.CASCADE, related_name='records')
-    quantity = models.PositiveIntegerField()
-    recorded_on = models.DateField(auto_now=True)
+    quantity_complete = models.PositiveIntegerField(default=0)
+    recorded_on = models.DateField(default=date.today)
+    check_mark = models.BooleanField(default=False)
     
     class Meta():
         unique_together=[['habit', 'recorded_on']]
+    
+    def __str__(self):
+        return f"{self.recorded_on} {self.quantity_complete}"
 
