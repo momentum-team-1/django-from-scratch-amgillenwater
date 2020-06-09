@@ -18,8 +18,8 @@ def habit_list(request):
 
 @login_required
 def habit_detail(request, habit_pk):
-    detail = get_object_or_404(request.user.habits, pk=habit_pk)
-    return render(request, "habits/habit_detail.html", {"detail": detail})
+    habit = get_object_or_404(request.user.habits, pk=habit_pk)
+    return render(request, "habits/habit_detail.html", {"habit": habit})
 
 @login_required
 def add_habit(request):
