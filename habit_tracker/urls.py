@@ -24,6 +24,7 @@ urlpatterns = [
     path('habits/<int:habit_pk>/', habits_views.habit_detail, name="habit_detail"),
     path('habits/add/', habits_views.add_habit, name='add_habit'),
     path('habits/<int:habit_pk>/delete/', habits_views.delete_habit, name='delete_habit'),
+    path('habits/<int:habit_pk>/new/', habits_views.new_record, name='new_record'),
     path('admin/', admin.site.urls), 
     path('accounts/', include('registration.backends.simple.urls')),
 ]

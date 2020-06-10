@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Log daily record for habit: {{habit.goal}} {{habit.goal_quantity_num}} {{habit.goal_quantity_unit}}.</h2>
+
+<form action="{% url 'new_record' habit.pk %}" method="POST">
+    {%csrf_token%}
+    {{ form.as_p }}
+    <label for="{{form.recorded_on.id_for_label}}"></label>
+
+
+    <button type="submit">Log record</button>
+
+</form>
+
+{% endblock %}

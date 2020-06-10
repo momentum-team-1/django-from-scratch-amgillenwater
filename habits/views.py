@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from users.models import User
 from habits.models import DailyRecord, Habit
 from django.contrib.auth.decorators import login_required
-from .forms import HabitForm
+from .forms import HabitForm, RecordForm
 
 # Create your views here.
 def homepage(request):
@@ -43,3 +43,21 @@ def delete_habit(request, habit_pk):
         return redirect(to='habit_list')
 
     return render(request, "habits/delete_habit.html", {"habit": habit})
+
+@login_required
+def new_record(request, habit_pk):
+    habit = get_object_or_404(request.user.habits, pk=habit_pk)
+    if request.method == 'POST':
+        form = RecordForm(data=request.POST)
+        if form.is_valid():
+            record = form.save(commit=False)
+            record.habit = habit
+            record.save()
+            return redirect(to='habit_detail', habit_pk=habit.pk)
+
+    else:
+        form=RecordForm()
+    
+    return render(request,"habits/new_record.html", {'form':form,'habit':habit})
+
+
