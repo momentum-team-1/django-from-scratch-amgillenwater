@@ -16,5 +16,4 @@ class RecordForm(forms.ModelForm):
         fields= [
             'recorded_on', 
             'quantity_complete', 
-            'check_mark'
         ]

@@ -8,7 +8,7 @@ class Habit(models.Model):
     goal_quantity_num = models.PositiveIntegerField(default=0, help_text="What is your numeric goal for your daily habit? (ex--50)")
     goal_quantity_unit = models.CharField(max_length=260, help_text="What unit of measure are you using for your goal? (ex. pages)")
     date_created = models.DateField(auto_now_add=True)
-    
+
     def __str__(self):
         return f"{self.goal}{self.goal_quantity_num}{self.goal_quantity_unit}"
 

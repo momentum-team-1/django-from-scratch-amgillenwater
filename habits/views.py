@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import HabitForm, RecordForm
 from datetime import date,datetime
 from django.views.generic.edit import UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 # Create your views here.
 def homepage(request):
@@ -22,7 +22,13 @@ def habit_list(request):
 @login_required
 def habit_detail(request, habit_pk):
     habit = get_object_or_404(request.user.habits, pk=habit_pk)
-    return render(request, "habits/habit_detail.html", {"habit": habit})
+    habit_detail = habit.records.all()
+    records_list= []
+
+    for record in DailyRecord.objects.filter(habit=habit):
+        records_list.append(record)
+    
+    return render(request, "habits/habit_detail.html", {"habit": habit, "habit_detail":habit_detail, "records_list":records_list,})
 
 @login_required
 def add_habit(request):
@@ -69,11 +75,10 @@ class UpdateDailyRecord(UpdateView):
     model = DailyRecord
     fields = ['recorded_on', 'quantity_complete']
     template_name_suffix = '_update_form'
-    success_url = reverse_lazy('habit_detail')
-    # def get_absolute_url(self):
-    #     return reverse('habit-detail', kwargs={'pk':self.pk})
+    success_url = reverse_lazy('habit_list')
 
 class DeleteDailyRecord(DeleteView):
      model = DailyRecord
      template_name_suffix= '_confirm_delete.html'
-     success_url = reverse_lazy('habit_detail')
+     success_url = reverse_lazy('habit_list')
+
