@@ -8,10 +8,12 @@ Daily Record
 <div class="container ml-8">
     <h2>I want to {{habit.goal}} {{habit.goal_quantity_num}} {{habit.goal_quantity_unit}}. </h2>
     <p>Date started: {{habit.date_created}}</p>
-    <!-- add the details from the log here -->
-    <p>
+    
+    
+    <div><p>
         <a href="{% url 'new_record' habit_pk=habit.pk %}"> Add a new daily record </a></br>
         <a href="{% url 'delete_habit' habit_pk=habit.pk %}"> Delete this habit </a>
-    </p>
+    </p></div>
+    
 </div>
 {% endblock %}

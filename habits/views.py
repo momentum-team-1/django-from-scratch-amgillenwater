@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import HabitForm, RecordForm
 from datetime import date,datetime
 from django.views.generic.edit import UpdateView
+from django.urls import reverse_lazy
 
 # Create your views here.
 def homepage(request):
@@ -62,5 +63,14 @@ def new_record(request, habit_pk):
         form=RecordForm(instance=record)
     
     return render(request,"habits/new_record.html", {'form':form,'habit':habit,'record':record})
+
+class UpdateDailyRecord(UpdateView):
+    model = DailyRecord
+    fields = ['recorded_on', 'quantity_complete']
+    template_name_suffix = '_update_form'
+    success_url = reverse_lazy('habit_detail')
+    # def get_absolute_url(self):
+    #     return reverse('habit-detail', kwargs={'pk':self.pk})
+
 
 
