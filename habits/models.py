@@ -19,7 +19,7 @@ class DailyRecord(models.Model):
     check_mark = models.BooleanField(default=False)
     
     class Meta():
-        unique_together=[['habit', 'recorded_on']]
+        unique_together=['habit', 'recorded_on']
     
     def __str__(self):
         return f"{self.recorded_on} {self.quantity_complete}"

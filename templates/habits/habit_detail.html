@@ -10,6 +10,7 @@ Daily Record
     <p>Date started: {{habit.date_created}}</p>
     <!-- add the details from the log here -->
     <p>
+        <a href="{% url 'new_record' habit_pk=habit.pk %}"> Add a new daily record </a></br>
         <a href="{% url 'delete_habit' habit_pk=habit.pk %}"> Delete this habit </a>
     </p>
 </div>
