@@ -4,7 +4,7 @@ from habits.models import DailyRecord, Habit
 from django.contrib.auth.decorators import login_required
 from .forms import HabitForm, RecordForm
 from datetime import date,datetime
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -58,7 +58,8 @@ def new_record(request, habit_pk):
             record.habit = habit
             record.save()
             return redirect(to='habit_detail', habit_pk=habit.pk)
-
+    # if record is None:
+    #     record = DailyRecord(habit=habit, recorded_on=date_for_record)
     else:
         form=RecordForm(instance=record)
     
@@ -72,5 +73,7 @@ class UpdateDailyRecord(UpdateView):
     # def get_absolute_url(self):
     #     return reverse('habit-detail', kwargs={'pk':self.pk})
 
-
-
+class DeleteDailyRecord(DeleteView):
+     model = DailyRecord
+     template_name_suffix= '_confirm_delete.html'
+     success_url = reverse_lazy('habit_detail')

@@ -18,7 +18,7 @@ class DailyRecord(models.Model):
     recorded_on = models.DateField(default=date.today)
     check_mark = models.BooleanField(default=False)
     
-    class Meta():
+    class Meta:
         unique_together=['habit', 'recorded_on']
     
     def __str__(self):
