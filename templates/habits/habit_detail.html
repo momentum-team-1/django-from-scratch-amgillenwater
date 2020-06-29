@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title%}
+Daily Record
+{% endblock%}
+
+{% block content %}
+<div>
+    <h2>I want to {{habit.goal}} {{habit.goal_quantity_num}} {{habit.goal_quantity_unit}}. </h2>
+    <p>Date started: {{habit.date_created}}</p>
+   <h4>Daily Records:</h4>
+    {% for record in records_list %}
+<ul>
+    <li><a href="{% url 'update_record' pk=record.pk%}"> {{ record.recorded_on }}: {{ record.quantity_complete }} {{habit.goal_quantity_unit}} {{habit.goal}}</a></li>
+   
+    
+</ul>
+{% endfor %}
+
+    
+    <div><p>
+        <a href="{% url 'new_record' habit_pk=habit.pk %}"> Add a new daily record </a></br>
+        <a href="{% url 'delete_habit' habit_pk=habit.pk %}"> Delete this habit </a>
+    </p></div>
+    
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    {% block meta %}{% endblock %}
+    <title>{% block title %}Habit Tracker{% endblock %}</title>
+</head>
+<body>
+    <div>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4"><a href="{% url 'homepage' %}" class="text-decoration-none">Habit Tracker</a></h1>
+            {% if user.is_authenticated %}
+            Hello, {{user.username}}!
+                <a href="{% url 'auth_logout' %}">Logout</a>
+            {% endif %}
+            </div>
+        </div>
+        <div class="container ml-8">
+            {% block content %}
+            {% endblock %}
+        </div>
+        
+    </div>
+    
+</body>
+</html>
